@@ -1,0 +1,17 @@
+-- SELECT
+-- 	COMMUNITY_AREA_NAME,
+-- 	AVG( SAFETY_SCORE ) AS average_safety_score 
+-- FROM
+-- 	chicago_public_schools WHERE SAFETY_SCORE IS NOT NULL
+-- GROUP BY
+-- 	COMMUNITY_AREA_NAME WITH ROLLUP 
+-- ORDER BY
+-- 	average_safety_score ASC
+-- LIMIT 1;
+SELECT
+	COMMUNITY_AREA_NAME 
+FROM
+	chicago_public_schools 
+WHERE
+	SAFETY_SCORE IS NOT NULL 
+	AND SAFETY_SCORE IN ( SELECT MIN( SAFETY_SCORE ) FROM chicago_public_schools WHERE SAFETY_SCORE IS NOT NULL )

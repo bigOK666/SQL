@@ -1,0 +1,1 @@
+SELECT * FROM `chicago_crime_data` LIMIT 10;
